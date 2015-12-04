@@ -4,6 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
+var mkdirp = require('mkdirp');
 
 
 function ExpressReactGenerator(args, options, config) {
@@ -71,12 +72,12 @@ ExpressReactGenerator.prototype.askFor = function () {
   };
 
 ExpressReactGenerator.prototype.basicSetup = function () {
-    this.mkdir('public');
-    this.mkdir('public/' + this.cssPreprocessor);
-    this.mkdir('public/vendor');
-    this.mkdir('public/img');
-    this.mkdir('public/css');
-    this.mkdir('public/js');
+    this.mkdirp('public');
+    this.mkdirp('public/' + this.cssPreprocessor);
+    this.mkdirp('public/vendor');
+    this.mkdirp('public/img');
+    this.mkdirp('public/css');
+    this.mkdirp('public/js');
 
     this.template('styles.css', 'public/' + this.cssPreprocessor + '/styles.' + this.cssExt);
     this.copy('main.js', 'public/js/main.js');
