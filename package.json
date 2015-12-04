@@ -1,0 +1,35 @@
+{
+  "name": "generator-express-polymer",
+  "version": "0.0.1",
+  "description": "yeoman generator with express and polymer 1.0",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alingam/generator-express-polymer.git"
+  },
+  "keywords": [
+    "yeoman",
+    "express",
+    "polymer",
+    "generator"
+  ],
+  "author": {
+    "name": "Aparna",
+    "email": "aparna.lingam86@gmail.com",
+    "url": "https://github.com/alingam"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alingam/generator-express-polymer/issues"
+  },
+  "homepage": "https://github.com/alingam/generator-express-polymer#readme",
+  "dependencies":{
+    "yeoman-generator": "^0.20.2"
+  },
+  "peerDependencies": {
+    "yo": "^1.0.0"
+  }
+}

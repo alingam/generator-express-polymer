@@ -1,0 +1,11 @@
+{
+  "name": "<%= _.slugify(appname) %>",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "^2.1.0",
+    "bootstrap": "^3.1.0",
+    "polymer": "Polymer/polymer#^1.0.0",
+    "webcomponentsjs": "~0.7.18",
+    "es6-shim":"0.33.13"
+  }
+}
