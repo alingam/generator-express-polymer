@@ -1,5 +1,5 @@
 {
-  "name": "<%= _.slugify(appname) %>",
+  "name": "<%= slugify(appname) %>",
   "version": "0.0.1",
   "scripts": {
     "start": "watchify components/index.js -v -t babelify -o public/js/bundle.js"

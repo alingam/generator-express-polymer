@@ -36,13 +36,6 @@ ExpressReactGenerator.prototype.askFor = function () {
     var prompts = [
     {
         type: 'list',
-        name: 'viewEngine',
-        message: 'ejs templates are being used, select if you want to change to jade',
-        default: 'ejs',
-        choices: ['ejs', 'jade']
-    },
-    {
-        type: 'list',
         name: 'styles',
         message: 'less is used, select if you want to change to css',
         default: 'less',
@@ -64,7 +57,7 @@ ExpressReactGenerator.prototype.askFor = function () {
         if(answers.styles=='less'){
             this.cssPreprocessor=answers.styles;
         }
-        this.viewEngine = answers.viewEngine;
+        this.viewEngine = 'jade';
         this.buildTool = 'grunt';
         cb();
     }).bind(this);
@@ -72,12 +65,12 @@ ExpressReactGenerator.prototype.askFor = function () {
   };
 
 ExpressReactGenerator.prototype.basicSetup = function () {
-    this.mkdirp('public');
-    this.mkdirp('public/' + this.cssPreprocessor);
-    this.mkdirp('public/vendor');
-    this.mkdirp('public/img');
-    this.mkdirp('public/css');
-    this.mkdirp('public/js');
+    mkdirp.sync('public');
+    mkdirp.sync('public/' + this.cssPreprocessor);
+    mkdirp.sync('public/vendor');
+    mkdirp.sync('public/img');
+    mkdirp.sync('public/css');
+    mkdirp.sync('public/js');
 
     this.template('styles.css', 'public/' + this.cssPreprocessor + '/styles.' + this.cssExt);
     this.copy('main.js', 'public/js/main.js');
