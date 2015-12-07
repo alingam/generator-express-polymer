@@ -4,7 +4,7 @@ var config = {
       port: 3000,
     },
     database: {
-      url: 'mongodb://localhost/<%= _.slugify(appname) %>_dev'
+      url: 'mongodb://localhost/<%= slugify(appname) %>_dev'
     }
   },
   testing: {
@@ -12,7 +12,7 @@ var config = {
       port: 3001
     },
     database: {
-      url: 'mongodb://localhost/<%= _.slugify(appname) %>_test'
+      url: 'mongodb://localhost/<%= slugify(appname) %>_test'
     }
   },
   production: {
@@ -20,7 +20,7 @@ var config = {
       port: 8080
     },
     database: {
-      url: 'mongodb://localhost/<%= _.slugify(appname) %>'
+      url: 'mongodb://localhost/<%= slugify(appname) %>'
     }
   }
 };
