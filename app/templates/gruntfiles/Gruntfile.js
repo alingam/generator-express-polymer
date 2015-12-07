@@ -79,14 +79,9 @@ module.exports = function (grunt) {
         tasks: ['<%= cssPreprocessor %>', 'cssmin', 'concat:css']
       }
     },
-    node-inspector: {
-        options: {
-            'save-live-edit': true
-        }
-    },
     concurrent: {
         dev: {
-            tasks: ['nodemon', 'node-inspector', 'watch'],
+            tasks: ['nodemon', 'watch'],
             options: {
                 logConcurrentOutput: true
             }

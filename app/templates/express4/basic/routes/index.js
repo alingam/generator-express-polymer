@@ -1,19 +1,6 @@
 /**
  * Module dependencies
  */
-var express = require('express');
-
-
-exports.index = function(req, res) {
-    res.render('index',{title:"Polymer App"})
-};
-
-exports.getFriends = function(req, res) {
-    res.set('Content-Type', 'application/json');
-    res.send(friendsList);
-};
-
-
 
 var friendsList =[
     {
@@ -93,5 +80,13 @@ var friendsList =[
         "address": "498 Garfield Place, Sanford, Wisconsin, 1047",
         "about": "Tempor est sit minim nulla minim voluptate amet. Nisi sunt mollit veniam ullamco deserunt minim laborum sit eu et voluptate dolor amet sunt. Reprehenderit irure excepteur Lorem proident Lorem non proident.\r\n"
     }
-]
+];
 
+exports.index = function(req, res) {
+    res.render('index',{title:"Polymer App"})
+};
+
+exports.getFriends = function(req, res) {
+    res.set('Content-Type', 'application/json');
+    res.send(friendsList);
+};

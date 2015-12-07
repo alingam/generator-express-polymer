@@ -4,11 +4,14 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
+var slugify = require('underscore.string/slugify');
 var mkdirp = require('mkdirp');
 
 
 function ExpressReactGenerator(args, options, config) {
     yeoman.generators.Base.apply(this, arguments);
+
+    this.slugify = slugify;
 
     this.argument('appname', {
         desc: 'create an express-app with name [appname]',
