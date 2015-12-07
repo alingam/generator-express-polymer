@@ -76,9 +76,11 @@ ExpressPolymerGenerator.prototype.basicSetup = function () {
     mkdirp.sync('public/img');
     mkdirp.sync('public/css');
     mkdirp.sync('public/js');
+    mkdirp.sync('public/components')
 
     this.template('styles.css', 'public/' + this.cssPreprocessor + '/styles.' + this.cssExt);
     this.copy('main.js', 'public/js/main.js');
+    this.src.copy('components','public/components',true)
 };
 
 ExpressPolymerGenerator.prototype.setupApp = function () {
