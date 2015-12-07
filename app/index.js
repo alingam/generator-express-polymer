@@ -80,7 +80,8 @@ ExpressPolymerGenerator.prototype.basicSetup = function () {
 
     this.template('styles.css', 'public/' + this.cssPreprocessor + '/styles.' + this.cssExt);
     this.copy('main.js', 'public/js/main.js');
-    this.src.copy('components','public/components',true)
+    this.copy('components/examplePolymer.html','public/components/examplePolymer.html')
+    this.copy('components/input.html','public/components/input.html')
 };
 
 ExpressPolymerGenerator.prototype.setupApp = function () {
