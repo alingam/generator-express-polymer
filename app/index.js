@@ -8,7 +8,7 @@ var slugify = require('underscore.string/slugify');
 var mkdirp = require('mkdirp');
 
 
-function ExpressReactGenerator(args, options, config) {
+function ExpressPolymerGenerator(args, options, config) {
     yeoman.generators.Base.apply(this, arguments);
 
     this.slugify = slugify;
@@ -21,20 +21,22 @@ function ExpressReactGenerator(args, options, config) {
     });
 
     this.on('end', function () {
-        this.installDependencies({skipInstall: options['skip-install']});
+        if(!this.options['skip-install']) {
+            this.installDependencies({npm : true, bower : true});
+        }
     });
 
     this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
-util.inherits(ExpressReactGenerator, yeoman.generators.Base);
+util.inherits(ExpressPolymerGenerator, yeoman.generators.Base);
 
 
-ExpressReactGenerator.prototype.askFor = function () {
+ExpressPolymerGenerator.prototype.askFor = function () {
     var cb = this.async(),
         root = this;
 
-    this.log(yosay('Welcome to the marvelous ExpressReact generator!'));
+    this.log(yosay('Welcome to the marvelous ExpressPolymer generator!'));
 
     var prompts = [
     {
@@ -67,7 +69,7 @@ ExpressReactGenerator.prototype.askFor = function () {
     this.prompt(prompts, answersCallback);
   };
 
-ExpressReactGenerator.prototype.basicSetup = function () {
+ExpressPolymerGenerator.prototype.basicSetup = function () {
     mkdirp.sync('public');
     mkdirp.sync('public/' + this.cssPreprocessor);
     mkdirp.sync('public/vendor');
@@ -79,7 +81,7 @@ ExpressReactGenerator.prototype.basicSetup = function () {
     this.copy('main.js', 'public/js/main.js');
 };
 
-ExpressReactGenerator.prototype.setupApp = function () {
+ExpressPolymerGenerator.prototype.setupApp = function () {
     var prefix = 'templates/express4/';
 
     if (this.options.mvc) {
@@ -90,25 +92,25 @@ ExpressReactGenerator.prototype.setupApp = function () {
         this.directory('.', '.');
     }
 };
-ExpressReactGenerator.prototype.changeDir = function () {
+ExpressPolymerGenerator.prototype.changeDir = function () {
     this.sourceRoot(path.join(__dirname, 'templates', 'common'));
 };
 
-ExpressReactGenerator.prototype.writeBowerJSONFile = function () {
+ExpressPolymerGenerator.prototype.writeBowerJSONFile = function () {
     this.template('.bower.json', 'bower.json');
 };
 
-ExpressReactGenerator.prototype.projectfiles = function () {
+ExpressPolymerGenerator.prototype.projectfiles = function () {
     ['.bowerrc', '.editorconfig', '.gitignore', '.jshintrc'].forEach(function (file) {
         this.copy(file === '.gitignore' ? 'gitignore' : file, file);
     }, this);
 };
 
-ExpressReactGenerator.prototype.writePackageJSONFile = function () {
+ExpressPolymerGenerator.prototype.writePackageJSONFile = function () {
     this.template('.package.json', 'package.json');
 };
 
-ExpressReactGenerator.prototype.writeBuildFile = function () {
+ExpressPolymerGenerator.prototype.writeBuildFile = function () {
     var buildFile = 'Gruntfile.'+ this.buildToolLanguage;
 
     this.sourceRoot(path.join(__dirname, 'templates/' + this.buildTool + 'files'));
@@ -120,4 +122,4 @@ ExpressReactGenerator.prototype.writeBuildFile = function () {
 
 
 
-module.exports = ExpressReactGenerator;
+module.exports = ExpressPolymerGenerator;
