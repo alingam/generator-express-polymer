@@ -1,6 +1,6 @@
 {
   "name": "generator-express-polymer",
-  "version": "0.0.17",
+  "version": "0.0.16",
   "description": "yeoman generator with express and polymer 1.0",
   "main": "app/index.js",
   "scripts": {
