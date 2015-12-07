@@ -1,0 +1,47 @@
+<!-- Imports polymer -->
+<link rel="import" href="input.html">
+<link rel="import" href="../vendor/iron-ajax/iron-ajax.html">
+<!-- Defines element markup -->
+<dom-module id="example-polymer">
+  <template>
+    <style>
+      #address{
+        color:#0066cc;
+      }
+    </style>
+    <iron-ajax
+      auto
+      url="/getFriends"
+      handle-as="json"
+      last-response="{{friends}}"></iron-ajax>
+    <input-text></input-text>
+    <p id="one">My Name: {{who}}</p>
+    <p> Friends: </p>
+    <ul>
+      <template is="dom-repeat" items="{{friends}}">
+        <li>
+          <span>{{item.name}}</span>
+          <p id="address">{{item.address}}</p>
+          <p>{{item.about}}</p>
+        </li>
+      </template>
+    </ul>
+  </template>
+</dom-module>
+
+<!-- Registers custom element -->
+<script>
+  Polymer({
+    is: 'example-polymer',
+    properties: {
+      who: {
+        type: String,
+        value: 'Alice'
+      }
+    },
+    ready:function(){
+      this.friends= ['Mathew','John','Rob','Melissa'];
+    }
+  });
+
+</script>
